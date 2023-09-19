@@ -5,8 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: main
           uri: https://github.com/NicolasOrtiz7/ms-prueba.git
-          search-paths: config-data
+          searchPaths: config-data
   application:
     name: config-service
