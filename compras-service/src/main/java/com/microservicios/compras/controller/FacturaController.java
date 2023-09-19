@@ -46,7 +46,7 @@ public class FacturaController {
     }
 
     @PostMapping
-    public ResponseEntity<Factura> createInvoice(@RequestBody Factura factura, BindingResult result) {
+    public ResponseEntity<Factura> createFacturas(@RequestBody Factura factura, BindingResult result) {
         log.info("Creating Invoice : {}", factura);
         if (result.hasErrors()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, this.formatMessage(result));
@@ -57,7 +57,7 @@ public class FacturaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateInvoice(@PathVariable("id") long id, @RequestBody Factura factura) {
+    public ResponseEntity<?> updateFacturas(@PathVariable("id") long id, @RequestBody Factura factura) {
         log.info("Updating Invoice with id {}", id);
 
         factura.setId(id);
@@ -67,7 +67,7 @@ public class FacturaController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Factura> deleteInvoice(@PathVariable("id") long id) {
+    public ResponseEntity<Factura> deleteFacturas(@PathVariable("id") long id) {
         log.info("Fetching & Deleting Invoice with id {}", id);
 
         Factura factura = facturaService.getFactura(id);

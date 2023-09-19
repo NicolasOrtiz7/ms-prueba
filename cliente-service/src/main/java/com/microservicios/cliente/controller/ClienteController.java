@@ -49,7 +49,7 @@ public class ClienteController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Cliente> getCustomer(@PathVariable("id") long id) {
+    public ResponseEntity<Cliente> getCliente(@PathVariable("id") long id) {
         log.info("Fetching Customer with id {}", id);
         Cliente cliente = clienteService.getCliente(id);
         if (  null == cliente) {
@@ -60,7 +60,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public void createCustomer(@RequestBody Cliente cliente, BindingResult result) {
+    public void createCliente(@RequestBody Cliente cliente, BindingResult result) {
         log.info("Creating Customer : {}", cliente);
         if (result.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, this.formatMessage(result));
@@ -69,7 +69,7 @@ public class ClienteController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Cliente> updateCustomer(@PathVariable("id") long id, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> updateCliente(@PathVariable("id") long id, @RequestBody Cliente cliente) {
         log.info("Updating Customer with id {}", id);
 
         Cliente currentCustomer = clienteService.getCliente(id);
@@ -84,7 +84,7 @@ public class ClienteController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Cliente> deleteCustomer(@PathVariable("id") long id) {
+    public ResponseEntity<Cliente> deleteCliente(@PathVariable("id") long id) {
         log.info("Fetching & Deleting Customer with id {}", id);
 
         Cliente cliente = clienteService.getCliente(id);
