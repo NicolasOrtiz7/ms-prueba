@@ -1,6 +1,11 @@
 server:
   port: 8002
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8099/eureka/
+
 spring:
   ############### CONEXION A BASE DE DATOS
   datasource:
