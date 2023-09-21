@@ -3,7 +3,9 @@ package com.microservicios.compras.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microservicios.compras.entity.Factura;
+import com.microservicios.compras.model.Cliente;
 import com.microservicios.compras.service.FacturaService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +36,7 @@ public class FacturaController {
         return  ResponseEntity.ok(facturas);
     }
 
+    @CircuitBreaker(name = "clientesCB", fallbackMethod = "fallBackClientes")
     @GetMapping("/{id}")
     public ResponseEntity<Factura> getFactura(@PathVariable("id") long id) {
         log.info("Fetching Invoice with id {}", id);
@@ -98,6 +101,13 @@ public class FacturaController {
             e.printStackTrace();
         }
         return jsonString;
+    }
+
+
+    // ############## CIRCUIT BREAKER
+
+    private ResponseEntity<List<Cliente>> fallBackClientes(RuntimeException e){
+        return new ResponseEntity("El servicio esta deshabilitado actualmente", HttpStatus.OK);
     }
 
 
