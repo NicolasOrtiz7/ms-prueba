@@ -12,6 +12,7 @@
         <module name="config-service" />
         <module name="producto-service" />
         <module name="compras-service" />
+        <module name="gateway-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +20,7 @@
       <module name="compras-service" target="17" />
       <module name="config-service" target="17" />
       <module name="eureka-service" target="17" />
+      <module name="gateway-service" target="17" />
       <module name="producto-service" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -28,6 +30,7 @@
       <module name="compras-service" options="-parameters" />
       <module name="config-service" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
       <module name="producto-service" options="-parameters" />
     </option>
   </component>
