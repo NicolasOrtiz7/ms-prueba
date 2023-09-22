@@ -16,7 +16,7 @@ spring:
         - id: cliente-service # id unico para la ruta
           uri: lb://cliente-service # lb:// utiliza el equilibrador de carga de Ribbon junto con eureka. redirige las solicitudes a este servicio
           predicates:
-            - Path=/clientes/** # cuando se entra a este path, se redirige a el microservicio correspondiente
+            - Path=/clientes/** # cuando se entra a este path, se redirige al microservicio correspondiente
         - id: producto-service
           uri: lb://producto-service
           predicates:
@@ -24,4 +24,4 @@ spring:
         - id: compras-service
           uri: lb://compras-service
           predicates:
-            - Path=/factuas/**
+            - Path=/facturas/**
